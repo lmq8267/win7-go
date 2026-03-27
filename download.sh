@@ -260,15 +260,15 @@ install_go() {
     # Windows 永久生效（用户级环境变量）
     if [ "$OS" = "windows" ]; then
         # 转换为 Windows 路径格式
-        WIN_GO_BIN_DIR=$(echo "$GO_BIN_DIR" | sed 's|/c/|C:\\|;s|/|\\|g')
-        WIN_GOROOT=$(echo "$GOROOT_PATH" | sed 's|/c/|C:\\|;s|/|\\|g')
-
-        powershell -Command "$oldPath=[Environment]::GetEnvironmentVariable('PATH','User'); if(-not $oldPath){$oldPath=''}; $cleanPath=($oldPath -split ';' | Where-Object {$_ -notmatch 'hostedtoolcache.*go'}) -join ';'; if($cleanPath -notlike '*${WIN_GO_BIN_DIR}*'){[Environment]::SetEnvironmentVariable('PATH','${WIN_GO_BIN_DIR};'+$cleanPath,'User')}; [Environment]::SetEnvironmentVariable('GOROOT','${WIN_GOROOT}','User'); [Environment]::SetEnvironmentVariable('GOTOOLCHAIN','local','User')" 2>/dev/null || true
-
-        if [ -n "$ARCH" ]; then
-            powershell -Command "[Environment]::SetEnvironmentVariable('ARCH','${ARCH}','User')" 2>/dev/null || true
-        fi
-        print_info "Windows 用户环境变量已永久生效，新开的终端将可直接使用 go"
+        WIN_GO_BIN_DIR=$(cygpath -w "$GO_BIN_DIR" 2>/dev/null || echo "$GO_BIN_DIR" | sed 's|^/\([a-zA-Z]\)/|\1:\\|;s|/|\\|g')
+        WIN_GOROOT=$(cygpath -w "$GOROOT_PATH" 2>/dev/null ||  echo "$GOROOT_PATH" | sed 's|^/\([a-zA-Z]\)/|\1:\\|;s|/|\\|g')
+  
+        # 追加到用户 PATH 
+        powershell -Command "[Environment]::SetEnvironmentVariable('PATH', [Environment]::GetEnvironmentVariable('PATH','User') + ';${WIN_GO_BIN_DIR}', 'User')" 2>/dev/null || true
+        powershell -Command "[Environment]::SetEnvironmentVariable('GOROOT', '${WIN_GOROOT}', 'User')" 2>/dev/null || true
+        powershell -Command "[Environment]::SetEnvironmentVariable('GOTOOLCHAIN', 'local', 'User')" 2>/dev/null || true
+        powershell -Command "[Environment]::SetEnvironmentVariable('ARCH', '${ARCH}', 'User')" 2>/dev/null || true
+        print_info "Windows 用户环境变量已生效"
     fi
 
     # 验证安装
