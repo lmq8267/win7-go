@@ -1,6 +1,6 @@
-# [Go Legacy Win7](thongtech/go-legacy-win7) 安装脚本
+# [Go Legacy Win7](https://github.com/lmq8267/win7-go) 安装脚本
 
-一个跨平台的 [Go Legacy Win7](thongtech/go-legacy-win7) 安装脚本，支持构建可在 Windows 7 运行的 Go 程序。
+一个跨平台的 [Go Legacy Win7](https://github.com/lmq8267/win7-go) 安装脚本，支持构建可在 Windows 7 运行的 Go 程序。
 
 ## 功能特性
 
@@ -25,7 +25,7 @@
 |------|------|------|------|
 | `go-version` | 指定要安装的 Go 版本 | `1.25.7-1` | 否 |
 | `go-version-file` | 版本文件路径 (go.mod/.go-version/.tool-versions) | | 否 |
-| `token` | GitHub API 认证令牌，用于获取[Go Legacy Win7](thongtech/go-legacy-win7)的版本，防止速率限制，一般无需提供 | | 否 |
+| `token` | GitHub API 认证令牌，用于获取[Go Legacy Win7](https://github.com/lmq8267/win7-go)的版本，防止速率限制，一般无需提供 | | 否 |
 | `architecture` | 目标架构 (x86/x64/arm64/arm) | 自动检测 | 否 |
 
 ## 支持的版本文件
@@ -102,7 +102,7 @@ Action 使用 `composite` 类型，主要步骤：
 1. 设置 GitHub 工作路径
 2. 检测平台和架构
 3. 设置版本信息
-4. 下载并安装 Go Legacy Win7
+4. 下载并安装 [Go Legacy Win7](https://github.com/lmq8267/win7-go)
 5. 设置输出变量
 
 ## 许可证
