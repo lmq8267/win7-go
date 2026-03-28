@@ -1,4 +1,4 @@
-name: '设置 Go Legacy Win7 环境'  
+name: '安装支持 Win7 Go 环境'  
 description: '设置 Go Legacy Win7 环境并添加到 PATH，支持构建可在 Windows 7 运行的 Go 程序'
 branding:
   icon: 'arrow-down'
