@@ -1,6 +1,6 @@
 # [Go Legacy Win7](https://github.com/thongtech/go-legacy-win7) 安装脚本
 
-一个跨平台的 [Go Legacy Win7](https://github.com/thongtech/go-legacy-win7) 安装脚本，支持构建可在 Windows 7 运行的 Go 程序。
+一个GitHub工作流自动安装配置 [Go Legacy Win7](https://github.com/thongtech/go-legacy-win7) 的脚本，支持构建可在 Windows 7 运行的 Go 程序。
 
 ## 功能特性
 
