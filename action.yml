@@ -16,6 +16,7 @@ inputs:
 
   token:
     description: '用于从 GitHub API 获取版本信息的认证令牌，避免速率限制'
+    default: ${{ github.server_url == 'https://github.com' && github.token || '' }}
     required: false
 
   architecture:
